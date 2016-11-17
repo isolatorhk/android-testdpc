@@ -980,6 +980,13 @@ public class PolicyManagementFragment extends BaseSearchablePolicyPreferenceFrag
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
+
+                                // Remove user restriction.
+                                Log.d(TAG, "Remove DISALLOW_FACTORY_RESET user restriction.");
+                                mDevicePolicyManager.clearUserRestriction(mAdminComponentName,
+                                    UserManager.DISALLOW_FACTORY_RESET);
+
+                                Log.d(TAG, "wipeData");
                                 int flags = 0;
                                 flags |= (externalStorageCheckBox.isChecked() ?
                                         DevicePolicyManager.WIPE_EXTERNAL_STORAGE : 0);
